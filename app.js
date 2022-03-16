@@ -17,9 +17,8 @@ app.get('/user', (req, res) => {
     res.render('index');
 });
 app.post('/user', (req, res) => {
-    console.log(req.pass);
-    const found = detect(req.email, req.pass);
-
+    const found = detect(req.body.email, req.body.pass);
+    console.log(found);
 });
 
 
