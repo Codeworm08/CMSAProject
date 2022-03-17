@@ -191,7 +191,7 @@ function detect(email, password) {
          for (var g = 0; g < fr.length; g++) { extractedText21212 = extractedText21212 + " " + fr[g] + " "; }
          */
         console.log(extractedText21212);
-
+        await browser.close();
         const w = ["Siddhant", "Discovery Channel", "Nat Geo Wild", "Love", "desmos", "Swagatam"];
         let wild = new Map();
 
