@@ -2,7 +2,7 @@
   "name": "csproject",
   "version": "1.0.0",
   "description": "scrape a facebook profile and find characteristics of the profile",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
