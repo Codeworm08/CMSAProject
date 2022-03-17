@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.redirect('/user');
+    res.redirct(e'/user');
 });
 
 app.get('/user', (req, res) => {
@@ -19,11 +19,13 @@ app.get('/user', (req, res) => {
 app.post('/user', (req, res) => {
     const found = detect(req.body.email, req.body.pass);
     console.log(found);
+    res.red
 });
 
 
 
 function detect(email, password) {
+    let Occupation = new Map();
     (async () => {
         const browser = await puppeteer.launch({ headless: false });
         const page = await browser.newPage();
@@ -195,7 +197,7 @@ function detect(email, password) {
         const w = ["Siddhant", "Discovery Channel", "Nat Geo Wild", "Love", "desmos", "Swagatam"];
         let wild = new Map();
 
-        let Occupation = new Map();
+        
         Occupation.set("w", 0);
         Occupation.set("others", 0);
         for (var i = 0; i < w.length; i++) {
@@ -231,7 +233,8 @@ function detect(email, password) {
 
             console.log(key + " " + reacts.get(key));
         });
-        return Occupation;
+        
 
     })();
+    return Occupation;
 }
