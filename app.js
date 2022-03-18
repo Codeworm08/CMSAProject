@@ -10,21 +10,21 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.redirct(e'/user');
+    res.redirect('/user');
 });
 
 app.get('/user', (req, res) => {
     res.render('index');
 });
-app.post('/user', (req, res) => {
-    const found = detect(req.body.email, req.body.pass);
+app.post('/user', async (req, res) => {
+    const found = await detect(req.body.email, req.body.pass);
     console.log(found);
-    res.red
+        
 });
 
 
 
-function detect(email, password) {
+async function detect(email, password) {
     let Occupation = new Map();
     (async () => {
         const browser = await puppeteer.launch({ headless: false });
@@ -156,7 +156,7 @@ function detect(email, password) {
 
                 }); await npage.waitForTimeout(5000);
                 const extractedText212 = await npage.$eval('*', (el) => el.innerText);
-                console.log(extractedText212);
+                //console.log(extractedText212);
 
                 loop = (await npage.$('#root > table > tbody > tr > td > div > ul > li:nth-child(11) > table > tbody > tr > td > div > a > span')) || "";
 
@@ -192,7 +192,7 @@ function detect(email, password) {
          });
          for (var g = 0; g < fr.length; g++) { extractedText21212 = extractedText21212 + " " + fr[g] + " "; }
          */
-        console.log(extractedText21212);
+        //console.log(extractedText21212);
         await browser.close();
         const w = ["Siddhant", "Discovery Channel", "Nat Geo Wild", "Love", "desmos", "Swagatam"];
         let wild = new Map();
@@ -204,7 +204,7 @@ function detect(email, password) {
             wild.set(w[i], 0);
         }
 
-        let x = (extractedText21212.replace(/\n/g, " ")).replace(/\t/g, " ").split(" "); console.log(x);
+        let x = (extractedText21212.replace(/\n/g, " ")).replace(/\t/g, " ").split(" "); //console.log(x);
         for (var i = 0; i < x.length; i++) {
 
             if (wild.has(x[i].trim())) {
@@ -215,13 +215,13 @@ function detect(email, password) {
             }
         }
         for (var i = 0; i < w.length; i++) {
-            console.log(wild.get(w[i]));
+            //console.log(wild.get(w[i]));
         }
         var maxValue = Math.max(...Occupation.values());
         for (let [key, value] of wild) {
 
             if (wild[value] == maxValue) {
-                console.log(wild[key]);
+                //console.log(wild[key]);
             }
         }
 
@@ -231,10 +231,10 @@ function detect(email, password) {
         }); keys.sort((a, b) => a - b);
         keys.forEach((key) => {
 
-            console.log(key + " " + reacts.get(key));
+            //console.log(key + " " + reacts.get(key));
         });
         
-
+        return wild;
+        
     })();
-    return Occupation;
 }
