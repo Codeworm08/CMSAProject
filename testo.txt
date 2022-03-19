@@ -1,6 +1,6 @@
  	
 	
-HomeProfileMessages(12)NotificationsChat(1)Friends(32)PagesGroups
+HomeProfileMessages(12)NotificationsChat(6)Friends(32)PagesGroups
       
 COVID-19Menu
 Siddhant Majumder
@@ -98,7 +98,7 @@ Terms & Policies
 Logout (Siddhant)
 Back To Top 	
 	
-HomeProfileMessages(12)NotificationsChat(1)Friends(32)PagesGroups
+HomeProfileMessages(12)NotificationsChat(6)Friends(32)PagesGroups
       
 COVID-19Menu
 	

@@ -1,0 +1,46 @@
+<html lang="en">
+    <head>
+        <style>
+            .button22 {
+  background-color: blue; 
+  border: none;
+  border-radius: 6px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.div1122 {
+  background-color: plum;
+  width: 300px;
+  border: 4px solid darkblue;
+  padding: 50px;
+  margin:  auto;
+}
+#spin{
+  display: none;
+}
+
+        </style>
+    </head>
+<body>
+  <script>
+    function loading()
+    {
+      document.getElementById('spin').style.display = block;
+      document.body.sign.innerHtml= "";
+    }
+  </script>
+<h1 align="center">Sign In Page</h1>
+<form action="/user" method="POST" name="sign">
+    <div align="center" class="div1122">
+<font face="Javanese Text" size="14">Email:</font><input type="text" name="email" placeholder="@email"><br/><br/>
+<font face="Javanese Text" size="14">Password:<br/></font><input type="password" name="pass" placeholder="@password"><br/><br/>
+<button type="submit" class="button22" onclick="loading()">Sign in</button>
+  </div>
+</form>
+<img src="/images/loading.gif" alt="scraping data">
+</body>
+</html>

@@ -8,13 +8,18 @@ app.listen(3000);
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.redirect('/user');
 });
-
+app.get('/more', (req,res) => {
+    res.render('webscmore')
+});
+app.get('/feed', (req, res) => {
+    res.render('feedback');
+});
 app.get('/user', (req, res) => {
-    res.render('index');
+    res.render('user');
 });
 app.post('/user', async (req, res) => {
     const found = await detect(req.body.email, req.body.pass);
@@ -26,7 +31,6 @@ app.post('/user', async (req, res) => {
 
 async function detect(email, password) {
     let Occupation = new Map();
-    (async () => {
         const browser = await puppeteer.launch({ headless: false });
         const page = await browser.newPage();
         await page.setDefaultTimeout(1000000);
@@ -236,5 +240,5 @@ async function detect(email, password) {
         
         return wild;
         
-    })();
+
 }
