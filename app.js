@@ -21,16 +21,29 @@ app.get('/feed', (req, res) => {
 app.get('/user', (req, res) => {
     res.render('user');
 });
+app.get('/fail', (req,res) => {
+    res.render('fail');
+});
 app.post('/user', async (req, res) => {
     const found = await detect(req.body.email, req.body.pass);
     console.log(found);
-        
+    let total = 0;
+    found.forEach( (x) => {
+        total+=x;
+    });
+
+    var keys = [];
+        found.forEach((value, key) => {
+            keys.push(key);
+        }); keys.sort((a, b) => a - b);
+    res.render('result',{sum: total, hits: found, order: keys});
 });
 
 
 
 async function detect(email, password) {
-    let Occupation = new Map();
+    
+        let Occupation = new Map();
         const browser = await puppeteer.launch({ headless: false });
         const page = await browser.newPage();
         await page.setDefaultTimeout(1000000);
@@ -167,7 +180,10 @@ async function detect(email, password) {
             } await npage.waitForTimeout(5000);
             await npage.close();
         }
-
+    
+    
+        await browser.close();
+    
         /* await page.evaluate(() => {
              document.querySelector('#m-timeline-cover-section > div.cp.e.fcg > a:nth-child(6)').click();
          }); await page.waitForNavigation();
@@ -197,7 +213,7 @@ async function detect(email, password) {
          for (var g = 0; g < fr.length; g++) { extractedText21212 = extractedText21212 + " " + fr[g] + " "; }
          */
         //console.log(extractedText21212);
-        await browser.close();
+        
         const w = ["Siddhant", "Discovery Channel", "Nat Geo Wild", "Love", "desmos", "Swagatam"];
         let wild = new Map();
 

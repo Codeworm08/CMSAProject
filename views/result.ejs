@@ -1,0 +1,12 @@
+<%- include('./partials/header.ejs') %>
+</head>
+<body>
+    <h1>Result</h1>
+    <h2>Total Abusive Words Found: <%= sum %></h2>
+    
+    <% if (hits.size>0) { %>
+        <% hits.forEach((value, key) => { %>
+            <h3><%= key %>: <%= value %></h3>
+        <% }); %>
+    <% } %>
+</body>
