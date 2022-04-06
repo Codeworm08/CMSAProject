@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
 const puppeteer = require('puppeteer');
+const bodyParser = require('body-parser');
 const fs = require('fs');
+const { check, validationResult} = require('express-validator');
 
 app.listen(3000);
 
@@ -10,7 +12,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.get('/', (req, res) => {
-    res.redirect('/user');
+    res.render('index');
 });
 app.get('/more', (req,res) => {
     res.render('webscmore')
@@ -24,19 +26,29 @@ app.get('/user', (req, res) => {
 app.get('/fail', (req,res) => {
     res.render('fail');
 });
-app.post('/user', async (req, res) => {
-    const found = await detect(req.body.email, req.body.pass);
-    console.log(found);
-    let total = 0;
-    found.forEach( (x) => {
-        total+=x;
-    });
-
-    var keys = [];
-        found.forEach((value, key) => {
-            keys.push(key);
-        }); keys.sort((a, b) => a - b);
-    res.render('result',{sum: total, hits: found, order: keys});
+var loginValid = [
+    check('email','Please enter valid email address').isEmail()
+];
+app.post('/user',loginValid, async (req, res) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(422).json({ errors:errors.array() });
+    }
+    else
+    {
+        const found = await detect(req.body.email, req.body.pass);
+        console.log(found);
+        let total = 0;
+        found.forEach( (x) => {
+            total+=x;
+        });
+    
+        var keys = [];
+            found.forEach((value, key) => {
+                keys.push(key);
+            }); keys.sort((a, b) => a - b);
+        res.render('result',{sum: total, hits: found, order: keys});
+    }
 });
 
 
