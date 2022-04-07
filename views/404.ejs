@@ -1,15 +1,7 @@
 <%- include('./partials/header.ejs') %>
-<style>
-    .total{
-        background-color: black;
-        color: azure;
-    }
-    .word{
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-</style>
 </head>
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
@@ -42,12 +34,6 @@
           </div>
         </div>
       </nav>
-    <h1>Result</h1>
-    <h2 class="total">Total Abusive Words Found: <%= sum %></h2>
-    
-    <% if (sortkeys.length>0) { %>
-        <% for (var i=0; i<3; i++) { %>
-            <h3 class="word"><%= sortkeys[i] %>:<%= hits.get(sortkeys[i]) %><%console.log(hits.get(sortkeys[i])) %></h3>
-        <% } %>
-    <% } %>  
+    <h1 style="color:red;text-align:center;">ERROR 404!</h1>
+    <h3>Page not found.</h3>
 </body>
