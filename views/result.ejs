@@ -44,10 +44,15 @@
       </nav>
     <h1>Result</h1>
     <h2 class="total">Total Abusive Words Found: <%= sum %></h2>
+
+
     
-    <% if (sortkeys.length>0) { %>
+    <% if (sum>0) { %>
+      <h3>Top 3 words found:</h3>
+        <% const iter = hits.keys(); %>
         <% for (var i=0; i<3; i++) { %>
-            <h3 class="word"><%= sortkeys[i] %>:<%= hits.get(sortkeys[i]) %><%console.log(hits.get(sortkeys[i])) %></h3>
+            <% let s = iter.next().value; %>
+            <h3 class="word"><%= s %>:<%= hits.get(s) %><% console.log(hits.get(s)) %></h3>
         <% } %>
     <% } %>  
 </body>
