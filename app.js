@@ -60,7 +60,7 @@ app.use((req, res) =>{
 async function detect(email, password) {
     
 
-        const browser = await puppeteer.launch({ headless: false,'args' : [
+        const browser = await puppeteer.launch({ headless: true,'args' : [
             '--no-sandbox',
             '--disable-setuid-sandbox'
           ] });
