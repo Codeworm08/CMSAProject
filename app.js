@@ -60,7 +60,10 @@ app.use((req, res) =>{
 async function detect(email, password) {
     
 
-        const browser = await puppeteer.launch({ headless: false });
+        const browser = await puppeteer.launch({ headless: false,'args' : [
+            '--no-sandbox',
+            '--disable-setuid-sandbox'
+          ] });
         const page = await browser.newPage();
         await page.setDefaultTimeout(1000000);
         var extractedText2121 = " "; var extractedText21212;
