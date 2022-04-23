@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const { check, validationResult} = require('express-validator');
 
-app.listen(3000);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT);
 
 app.set('view engine', 'ejs');
 
